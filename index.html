@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Fooble Countdown" />
+    <meta name="author" content="Fooble" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="revisit-after" content="2 days" />
+
+    <link href="font/font.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+
+    <link href="favicon.ico" rel="shortcut icon" />
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <script src="script.js" defer></script>
+
+    <meta name="keywords" content="Fooble, Countdown, Timer" />
+    <meta
+      name="description"
+      content="A simple website that allows users to easily create and share countdowns."
+    />
+
+    <title>Fooble Countdown</title>
+  </head>
+  <body>
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+      <button class="action-btn" id="shareBtn" title="Share Countdown">
+        <i class="ri-share-line"></i>
+      </button>
+      <button class="action-btn" id="settingsBtn" title="Settings">
+        <i class="ri-settings-3-line"></i>
+      </button>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+      <!-- NAME -->
+      <h1 class="countdown-name" id="countdownName">Loading Countdown...</h1>
+
+      <!-- END TIME DISPLAY -->
+      <p class="end-time-display" id="endTimeDisplay">Ends on ...</p>
+
+      <!-- COUNTDOWN DISPLAY -->
+      <div class="countdown-display" id="countdownDisplay">
+        <div class="time-unit">
+          <span class="time-value" id="days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="minutes">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <div class="time-unit">
+          <span class="time-value" id="seconds">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+
+      <!-- FINISHED MESSAGE -->
+      <div class="finished-message" id="finishedMessage" style="display: none;">
+        <h2>🎉 Time's Up! 🎉</h2>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>&copy; 2025 <a href="https://fooble.dev">Fooble.dev</a></p>
+    </footer>
+
+    <!-- SETTINGS MODAL -->
+    <div class="modal" id="settingsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Countdown Settings</h2>
+          <button class="close-btn" id="closeModal" title="Close Settings">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="countdownTitle">Countdown Name:</label>
+            <input
+              id="countdownTitle"
+              type="text"
+              placeholder="Enter countdown name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="targetDate">Target Date:</label>
+            <input id="targetDate" type="datetime-local" />
+          </div>
+
+          <div class="form-group">
+            <label for="backgroundColor">Background Color:</label>
+            <input id="backgroundColor" type="color" value="#1a1a2e" />
+          </div>
+
+          <div class="form-group">
+            <label for="textColor">Text Color:</label>
+            <input id="textColor" type="color" value="#ffffff" />
+          </div>
+
+          <div class="form-group">
+            <label for="accentColor">Accent Color:</label>
+            <input id="accentColor" type="color" value="#16213e" />
+          </div>
+
+          <div class="form-group">
+            <label>Quick Event Shortcuts:</label>
+            <div class="event-shortcuts">
+              <button
+                class="event-shortcut"
+                data-event="christmas"
+                type="button"
+              >
+                <i class="ri-gift-line"></i>
+                Christmas
+              </button>
+              <button
+                class="event-shortcut"
+                data-event="christmas-eve"
+                type="button"
+              >
+                <i class="ri-gift-2-line"></i>
+                Christmas Eve
+              </button>
+              <button
+                class="event-shortcut"
+                data-event="new-year"
+                type="button"
+              >
+                <i class="ri-calendar-event-line"></i>
+                New Year
+              </button>
+              <button class="event-shortcut" data-event="easter" type="button">
+                <i class="ri-seedling-line"></i>
+                Easter
+              </button>
+              <button
+                class="event-shortcut"
+                data-event="halloween"
+                type="button"
+              >
+                <i class="ri-ghost-line"></i>
+                Halloween
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="saveSettings">
+            <i class="ri-checkbox-circle-line"></i>
+            Save Settings
+          </button>
+          <button class="btn btn-danger" id="resetSettings">Reset All</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESET CONFIRMATION MODAL -->
+    <div class="modal confirmation-modal" id="resetModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Reset Countdown</h2>
+          <button class="close-btn" id="closeResetModal" title="Close Reset Confirmation">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="warning-icon">
+            <i class="ri-error-warning-line"></i>
+          </div>
+          <p>Are you sure you want to reset all settings to default values?</p>
+          <p><strong>This action cannot be undone.</strong></p>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-danger" id="confirmReset">Yes, Reset</button>
+          <button class="btn btn-secondary" id="cancelReset">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHARE MODAL -->
+    <div class="modal" id="shareModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Share Countdown</h2>
+          <button class="close-btn" id="closeShareModal" title="Close Share Modal">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p>Share this countdown with others using the URL below:</p>
+          <div class="share-url-container">
+            <input
+              class="share-url-input"
+              id="shareUrlOutput"
+              type="text"
+              readonly
+            />
+            <button class="btn btn-copy" id="copyShareUrl">
+              <i class="ri-file-copy-line"></i>
+              Copy
+            </button>
+          </div>
+
+          <div class="embed-container">
+            <h4>Embed in Your Website:</h4>
+            <p class="embed-instructions">
+              Copy and paste this HTML code into your website:
+            </p>
+            <textarea
+              class="embed-textarea"
+              id="embedCode"
+              readonly
+              placeholder="HTML embed code will appear here..."
+            ></textarea>
+            <div class="embed-actions">
+              <button class="btn btn-copy" id="copyEmbedCode">
+                <i class="ri-file-copy-line"></i>
+                Copy HTML
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
