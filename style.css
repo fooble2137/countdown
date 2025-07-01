@@ -28,6 +28,7 @@ body {
     var(--bg-color) 0%,
     var(--accent-color) 100%
   );
+  background-color: var(--bg-color);
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--text-color);
