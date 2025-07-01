@@ -289,6 +289,10 @@ class CountdownApp {
       .replace(/\/$/, "/embed.html");
     const params = new URLSearchParams();
 
+    if (!embedUrl.endsWith("/embed.html") && !embedUrl.endsWith("/embed/")) {
+      embedUrl += "/embed.html";
+    }
+
     params.set("name", encodeURIComponent(this.settings.name));
     params.set("target", encodeURIComponent(this.settings.target));
     params.set("bg", this.settings.backgroundColor.replace("#", ""));
