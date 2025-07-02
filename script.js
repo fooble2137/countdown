@@ -434,9 +434,14 @@ class CountdownApp {
     const event = events[eventType];
 
     // Check if the event date has already passed this year
-    if (event.date < new Date() && eventType !== "new-year") {
+    if (event.date < new Date() && eventType !== "new-year" && eventType !== "easter") {
       // Move to next year for events that have passed (except New Year which is already next year)
       event.date.setFullYear(currentYear + 1);
+    }
+
+    // Recalculate Easter if the event has passed
+    if (event.date < new Date() && eventType === "easter") {
+      event.date = this.calculateEaster(currentYear + 1);
     }
 
     // Format date for datetime-local input
