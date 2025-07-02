@@ -797,10 +797,6 @@ body {
     width: 95%;
   }
 
-  .modal-footer {
-    flex-direction: column;
-  }
-
   .action-buttons {
     top: 15px;
     right: 15px;
@@ -838,6 +834,14 @@ body {
 
   .btn-copy {
     justify-content: center;
+    width: 100%;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer .btn {
     width: 100%;
   }
 }
