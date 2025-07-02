@@ -730,7 +730,6 @@ body {
   margin-bottom: 1rem;
   font-size: 0.9rem;
 }
-
 .embed-textarea {
   transition: border-color 0.3s ease, background 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -739,11 +738,13 @@ body {
   padding: 1rem;
   width: 100%;
   min-height: 150px;
+  overflow: auto;
   resize: vertical;
   color: var(--text-color-no-change);
   font-size: 0.85rem;
   line-height: 1.4;
   font-family: "Courier New", monospace;
+  white-space: nowrap;
 }
 
 .embed-textarea:focus {
