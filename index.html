@@ -60,19 +60,19 @@
       <div class="countdown-display" id="countdownDisplay">
         <div class="time-unit">
           <span class="time-value" id="days">00</span>
-          <span class="time-label">Days</span>
+          <span class="time-label" id="daysLabel" data-singular="Day" data-plural="Days">Days</span>
         </div>
         <div class="time-unit">
           <span class="time-value" id="hours">00</span>
-          <span class="time-label">Hours</span>
+          <span class="time-label" id="hoursLabel" data-singular="Hour" data-plural="Hours">Hours</span>
         </div>
         <div class="time-unit">
           <span class="time-value" id="minutes">00</span>
-          <span class="time-label">Minutes</span>
+          <span class="time-label" id="minutesLabel" data-singular="Minute" data-plural="Minutes">Minutes</span>
         </div>
         <div class="time-unit">
           <span class="time-value" id="seconds">00</span>
-          <span class="time-label">Seconds</span>
+          <span class="time-label" id="secondsLabel" data-singular="Second" data-plural="Seconds">Seconds</span>
         </div>
       </div>
 
@@ -84,7 +84,7 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>&copy; 2025 <a href="https://fooble.dev">Fooble.dev</a></p>
+      <p>&copy; <span id="currentYear">2026</span> <a href="https://fooble.dev">Fooble.dev</a></p>
     </footer>
 
     <!-- SETTINGS MODAL -->
@@ -128,7 +128,7 @@
           </div>
 
           <div class="form-group">
-            <label>Quick Event Shortcuts:</label>
+            <label for="quickEvents">Quick Event Shortcuts:</label>
             <div class="event-shortcuts">
               <button
                 class="event-shortcut"
@@ -182,7 +182,7 @@
 
     <!-- RESET CONFIRMATION MODAL -->
     <div class="modal confirmation-modal" id="resetModal">
-      <div class="modal-content">
+      <div class="modal-content modal-content--compact">
         <div class="modal-header">
           <h2>Reset Countdown</h2>
           <button class="close-btn" id="closeResetModal" title="Close Reset Confirmation">
@@ -207,7 +207,7 @@
 
     <!-- SHARE MODAL -->
     <div class="modal" id="shareModal">
-      <div class="modal-content">
+      <div class="modal-content modal-content--wide">
         <div class="modal-header">
           <h2>Share Countdown</h2>
           <button class="close-btn" id="closeShareModal" title="Close Share Modal">
